@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <!-- angular js -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        
+        <!-- Required meta tags -->
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+
+        <!-- Bootstrap CSS -->
+        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
+        <style>
+            body {
+                background-color: rgb(11, 109, 155);
+                margin-top: 30px;
+            }
+        </style>
+
+        <title>Welcome to Flight Management</title>
+    </head>
+
+    <body ng-app="flightapp" ng-controller="flightCtrl">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous'></script>
+
+    <!-- <div class='container'>
+            <div class='row'>
+                <div class='col-3 col-md-6'>
+                    <div class='card card-body'>1</div>
+                </div>
+                <div class='col-6 col-md-12 order-2 order-md-12'>
+                    <div class='card card-body'>3</div>
+                </div>
+                <div class='col-3 col-md-6 order-3'>
+                    <div class='card card-body'>2</div>
+                </div>
+            </div>
+    </div> -->
+
+     </div>   
+     <div class='card mx-auto' style='width:1000px;'> 
+        <div class='card-header'><h1>FLIGHT</h1></div>
+        <div class='card-body'>
+        <div class='container-fluid'>
+            <form>
+                <div class='row'>    
+
+                    <div class='col-md-4 order-2 order-md-12'>
+                        <div class='form-group'>
+                            <label for='fromCity'>Flying From</label>
+                            <input type='text' class='form-control' ng-model="fromCity" ng-keyup="checkFromDepartment(fromCity)" placeholder='กรอกชื่อเมืองต้นทาง' required>
+                        </div> 
+                    </div>
+                    <div class='col-md-4 order-3 order-md-12'>
+                        <div class='form-group'>
+                            <label for='toCity'>Flying to</label>
+                            <input type='text' class='form-control' ng-model='toCity' ng-keyup="checkToDepartment(toCity)" placeholder='กรอกชื่อเมืองปลายทาง'  required>
+                        </div>
+                    </div>
+
+                    <div class='col-md-4 order-1 order-md-12'>
+                        <div class='form-group'>
+                            <div class='form-check-inline'>
+                                <input class='form-check-input' type='radio' name='tripOption' id='typeTrip' value='One Way' checked>
+                                <label class='form-check-label' for='typeTrip' checked>One Way</label>
+                            </div>
+                            <div class='form-check-inline'>
+                                <input class='form-check-input' type='radio' name='tripOption' id='typeTrip' value='Round Way'>
+                                <label class='form-check-label' for='typeTrip'>Round Trip</label>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class='w-100'></div>
+
+                    <div class='col-md-4 order-4 order-md-12'>
+                        <div class='form-group'>
+                                <label for='departName'>Departing</label>
+
+                                <!-- <select class='custom-select' id="departMenu" ng-model="selectedCity" ng-repeat="dept in fromdepart" value="{{dept.value}}">    
+                                        <option selected>เลือกสนามบินเมืองต้นทาง</option>
+                                </select> -->
+                                <select class='custom-select' id="departMenu">    
+                                        <option selected>เลือกสนามบินเมืองต้นทาง</option>
+                                        <option ng-repeat="dept in fromdepart" value="{{dept.value}}">{{dept.displayname}}</option>
+                                </select>
+                        </div>                   
+                    </div>
+    
+                    <div class='col-md-4 order-5 order-md-12'>
+                        <div class='form-group'>
+                            <label for='returnName'>Returning</label>
+                            <select class='custom-select' id='returnMenu'>
+                                    <option selected>เลือกสนามบินเมืองปลายทาง</option>
+                                    <option ng-repeat="destdept in todepart" value="{{destdept.value}}">{{destdept.displayname}}</option>
+                            </select>
+                        </div>  
+                    </div>
+                    <div class='col-md-4 order-md-12'></div>
+                    <div class='w-100'></div>
+                    
+                    <div class='col-md-4 order-6 order-md-12'>
+                        <div class='form-group'>
+                            <label for='numberAdults'>Adults</label>
+                            <select class='custom-select' id='numberAdults'>
+                                    <option value='1' selected>1</option>
+                                    <option value='2'>2</option>
+                                    <option value='3'>3</option>
+                            </select> 
+                        </div>
+                    </div> 
+                    <div class='col-md-4 order-7 order-md-12'>
+                        <div class='form-group'>
+                            <label for='cabinClass'>Cabin</label>
+                            <select class='custom-select' id='cabinClass'>
+                                    <option value='firstClass'>FIRST CLASS</option>
+                                    <option value='businessClass' selected>BUSINESS CLASS</option>
+                                    <option value='economyClass'>ECONOMY CLASS</option>
+                            </select> 
+                        </div>
+                    </div> 
+                    <div class='w-100'></div><br>
+                    <div class='col-md-4 offset-md-2 order-8 order-md-12'>
+                        <button type='button' class='btn btn-primary' ng-click='search()' style='width: 100%;'>Search</button>
+                    </div>
+                </div>
+            </form>                
+       </div> <!--End of container-->
+       </div> <!--End of card-body-->
+
+       {{anotherResponse}}
+    
+    <script>
+        // https://www.learnkode.com/Examples/Angular/Ng-Keyup
+        var  app = angular.module('flightapp', []);
+        app.controller('flightCtrl', function($scope, $http) {
+            $scope.checkFromDepartment = function (data) {
+                if(['bangkok', 'bkk', 'กรุงเทพ', 'กรุงเทพมหานคร'].includes(data.toLowerCase())){
+                    $scope.fromdepart = [{
+                        value: 'bkk' ,
+                        displayname: 'Suvarnabhumi Airport (BKK)'
+                    } , {
+                        value: 'dmk' ,
+                        displayname: 'Donmuang Airport (DMK)'                       
+                    }];
+                }
+            }
+
+            $scope.checkToDepartment = function (data) {
+                if(['charles de gaulle', 'france'].includes(data.toLowerCase())){
+                    $scope.todepart = [{
+                        value: 'cdg' ,
+                        displayname: 'Charles de Gaulle Airport(CDG)'
+                    }];
+                }
+            }
+            // https://stackoverflow.com/questions/47808535/how-to-post-json-data-with-angularjs
+            $scope.search = function () {
+                var httpPostRequest = $http({
+                method:"POST",
+                url:"/bookflight", 
+                data :{
+                    "fromCity": $scope.fromCity ,
+                    "toCity": $scope.toCity ,
+                    "fromdepart": $("#departMenu :selected").text() ,
+                    "todepart": $("#returnMenu :selected").text() ,
+                    "passengers": $("#numberAdults :selected").text() ,
+                    "typeTrip": document.getElementById("typeTrip").value ,
+                    "cabinClass": $("#cabinClass :selected").text(),
+                },
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                });
+                window.location.href = 'resultflight.html'; 
+            }
+        });
+
+    </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <!-- angular js -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            body {
+                background-color: rgb(11, 109, 155);
+                margin-top: 30px;
+            }
+            .card {
+                padding: 20px;
+            }
+
+            .card-img-right {
+                height: 100%;
+                width: 100%;
+                background: url(images/Travel-Insurance-e1536686171876.jpg) center no-repeat;
+                background-size: cover;
+            }
+
+            .seemore {
+                color: crimson;
+                text-align: right;
+            }
+
+            .nameinsure {
+                color: darkblue;
+            }
+
+            .row .insurance {
+                height: 10rem;
+            }
+
+        </style>
+        <!-- Icon -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    </head>
+
+    <body ng-app="flightapp" ng-controller="flightCtrl">    
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <div class="card mx-auto" style="width: 1000px;">
+    <!-- <div class="container"> -->
+    <div class="row justify-content-center">
+    <div class="col-md-7">
+            <div class="col-md-12">
+                <i class="fas fa-briefcase"></i>&nbspประกันภัยระหว่างการเดินทาง<div><br>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card d-flex align-items-stretch">
+                    <div class="row insurance">
+                        <div class="col-md-6">
+                            <input type="checkbox" name="insuranceForBreifcase" value="i_briefcase">&nbsp
+                            <span class="nameinsure">ประกันกระเป๋าเดินทางหาย หรือ ล่าช้า<br></span>
+                            (ราคา 350 บาท)<br><br><br>
+                            <p class="seemore">ดูเพิ่มติม</p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-img-right">
+                            </div>
+                        </div>
+                    </div>
+                </div>                  
+        </div>
+            <br>
+            <div class="col-md-12">
+                    <div class="card d-flex align-items-stretch">
+                        <div class="row insurance">
+                            <div class="col-md-6">
+                                <input type="checkbox" name="insuranceForHealthcare" value="i_healthcare">&nbsp
+                                <span class="nameinsure">ประกันอุบัติเหตุและสุขภาพ ระหว่างเดินทาง<br></span>
+                                (ราคา 1,300 บาท)<br><br><br>
+                                <p class="seemore">ดูเพิ่มติม</p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-img-right" style="background: url(images/need-health-insurance-56a634c95f9b58b7d0e0681a.jpg) center no-repeat; background-size: cover;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>                  
+            </div>
+            <br>
+            <div class="col-md-6 offset-md-3">
+                <button type="button mx-auto" class="btn btn-primary" onclick="" style="width: 100%;">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Information -->
+    <div class="col-md-4" style="padding:0px;">
+        <br><br>
+        <div class="card" style="padding: 0px;">
+            <div class="card-header">
+                <h3 style="text-align: center;">Payment Information</h3>
+            </div>
+            <div class="card-body" style="padding: 0px;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="far fa-arrow-alt-circle-right"></i>&nbspFlight: บาท</li>
+                    <li class="list-group-item"><i class="far fa-arrow-alt-circle-right"></i>&nbspServices Fee: บาท</li>
+                    <li class="list-group-item"><i class="far fa-arrow-alt-circle-right"></i>&nbspDiscount: บาท</li>
+                </ul>                                    
+            </div> 
+            <div class="card-footer">
+                <i class="far fa-arrow-alt-circle-right"></i>&nbspTotal บาท
+            </div>     
+        </div>
+    </div>
+
+    </div>
+    <div ng-view></div>
+</div>
+
+
+
+    <!--Start of Javascript-->
+<script>
+    // var index = JSON.parse(sessionStorage.getItem("result"));          
+    // var  app = angular.module('flightapp', []);
+          
+    // app.controller('insuranceCtrl', function($scope, $http) {
+      
+    //   $http.get("/flight").then(function(response) {
+    //     $scope.flightdata = response.data;
+    //     $scope.flightdata = $scope.flightdata[0];        
+    //   });
+
+    //   $scope.tax = 1000;
+    //   $scope.service = 0;
+    //   $scope.discount = 0;
+    //   $scope.total = 0;
+
+    // });
+            
+</script>
+
+</body>
+</html>

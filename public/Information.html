@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- angular js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+      body {
+                background-color: rgb(11, 109, 155);
+                margin-top: 30px;
+            }
+            .card {
+                padding: 20px;
+            }
+
+            .card-img-right {
+                height: 100%;
+                width: 100%;
+                background: url(images/Travel-Insurance-e1536686171876.jpg) center no-repeat;
+                background-size: cover;
+            }
+
+            .seemore {
+                color: crimson;
+                text-align: right;
+            }
+
+            .nameinsure {
+                color: darkblue;
+            }
+
+            .row .insurance {
+                height: 10rem;
+            }      
+    </style>
+
+</head>
+
+  <body ng-app="flightapp" ng-controller="informationCtrl">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Start Card -->
+    <div class="card mx-auto" style="width:1000px;">
+      <div class="row justify-content-center" style="margin-top: 20px;margin-bottom: 20px;">
+
+        <div class="col-md-6">
+          <div ng-view></div>
+        </div>      
+
+      <!-- Start Payment Information -->
+      <div class="col-md-4" style="padding:0px;">   
+            <div class="card" style="padding: 0px;">
+                <div class="card-header">
+                    <h3 style="text-align: center;">Payment Information</h3>
+                </div>
+                <div class="card-body" style="padding: 0px;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                          <p style="text-align:left;">&nbspFlight:<span style="float:right;">{{flightdata.outbound.price * 30.21}} บาท</span></p></li>
+                        <li class="list-group-item">
+                          <p style="text-align:left;">&nbspTax:<span style="float:right;">{{tax}} บาท</span></p></li>
+                        <li class="list-group-item">
+                          <p style="text-align:left;">&nbspServices Fee:<span style="float:right;">{{service}} บาท
+                          <div ng-if="service==1300">
+                              <small><p style="text-align:left;">-&nbspTravel Insuranc:<span style="float:right;">1,300 บาท</span></p></small>
+                          </div>
+                          <div ng-if="service==350">
+                            <small><p style="text-align:left;">-&nbspBaggage Insuranc:<span style="float:right;">350 บาท</span></p></small>
+                          </div>
+                          <div ng-if="service==1650">
+                              <small><p style="text-align:left;">-&nbspTravel Insuranc:<span style="float:right;">1,300 บาท</span></p></small>
+                              <small><p style="text-align:left;">-&nbspBaggage Insuranc:<span style="float:right;">350 บาท</span></p></small>
+                          </div>
+                          </span></p></li>
+                        <li class="list-group-item">
+                          <p style="text-align:left;">&nbspDiscount:<span style="float:right;">{{discount}}บาท</span></p></li>
+                    </ul>
+                </div> 
+                <div class="card-footer">
+                    <p style="text-align:left;">&nbspTotal<span style="float:right;">{{(flightdata.outbound.price * 30.21) + tax + service - discount}} บาท</span></p>
+                </div>     
+            </div>
+        <!-- Close Payment Informaion -->          
+        </div>
+
+      </div>
+    <!-- End Card -->
+    </div>
+
+    <!-- Start Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Payment Information</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align:left;">&nbspFlight:<span style="float:right;">{{flightdata.outbound.price * 30.21}} บาท</span></p></li>
+                <p style="text-align:left;">&nbspTax:<span style="float:right;">{{tax}} บาท</span></p></li>
+                <p style="text-align:left;">&nbspServices Fee:<span style="float:right;">{{service}} บาท
+                    <div ng-if="service==350">
+                        <small><p style="text-align:left;">-&nbspBaggage Insuranc:<span style="float:right;">350 บาท</span></p></small>
+                      </div>
+                      <div ng-if="service==1650">
+                          <small><p style="text-align:left;">-&nbspTravel Insuranc:<span style="float:right;">1,300 บาท</span></p></small>
+                          <small><p style="text-align:left;">-&nbspBaggage Insuranc:<span style="float:right;">350 บาท</span></p></small>
+                      </div>
+                <p style="text-align:left;">&nbspDiscount:<span style="float:right;">{{discount}}บาท</span></p></li>
+                <p style="text-align:left;">&nbspTotal<span style="float:right;">{{(flightdata.outbound.price * 30.21) + tax + service - discount}} บาท</span></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" ng-click="confirm()" class="btn btn-primary">Confirm</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+        <!-- End Modal -->
+      </div>
+
+    
+<script>
+  // https://www.guru99.com/angularjs-routes.html
+
+    var index = JSON.parse(sessionStorage.getItem("result"));
+    
+    var  app = angular.module('flightapp', ['ngRoute']);
+
+    app.config(['$routeProvider', function($routeProvider){
+        $routeProvider.when('/insureweb',{
+            templateUrl : 'insurance.html'
+            // controller : 'informationCtrl'
+        })
+        .otherwise({
+            templateUrl : 'Passenger.html'
+            // controller : 'informationCtrl'
+        });
+    }]);
+
+    app.controller('informationCtrl', function($scope, $http) {
+      
+      $http.get("/flight").then(function(response) {
+        $scope.flightdata = response.data;
+        $scope.flightdata = $scope.flightdata[index];        
+      });
+      
+      $scope.service = 0;
+      $scope.tax = 1000;
+      $scope.discount = 0;
+      $scope.total = 0;
+
+      $scope.calculate = function (num, e) {
+        if(e.target.checked) {
+          $scope.service += num;
+        }
+        else
+          $scope.service -= num;
+          $scope.description;
+
+          if($scope.service == 1650) {
+            $scope.discount = (10*1650/100);
+          } else {
+            $scope.discount = 0;
+          }
+      }
+      
+      $scope.confirm = function () {
+        // var httpPostRequest = $http({
+        //         method:"POST",
+        //         url:"/confirm", 
+        //         data :{
+        //           "flight": $scope.flightdata,
+        //           "total": ddd,
+        //           "service": jj
+        //         },
+        //             headers: {
+        //                 "Content-type": "application/json; charset=UTF-8"
+        //             }
+        //         });
+        alert('จองตั๋วเรียบร้อยแล้ว')
+        window.location.href = 'index.html';         
+      }
+
+
+
+    });
+  
+  </script>
+
+  </body>
+</html>

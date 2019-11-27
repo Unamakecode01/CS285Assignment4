@@ -1,0 +1,81 @@
+<!-- ng click -> get -> https://jsonplaceholder.typicode.com/posts/1 เอามาโชว์ที่เว็บ -->
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+
+    <body>
+
+        <div ng-app="myApp" ng-controller="myCtrl"> 
+        <button ng-click="get()" >GET Button</button>
+        <br><br>
+        {{response.data}}
+
+        <!-- <button ng-click="callRESTAPI_POST()" >POST Button</button> -->
+        <br><br>
+        {{anotherResponse.data}}
+        </div>
+
+
+        <script>
+        //แบบง่ายยังไม่เจอเหตุการณ์ call ข้ามโดนเมน ถ้าเขียนไม่ถูกจะถูกด่าว่าห้ามข้ามserver =>  "CORS domain" 
+            var app = angular.module("myApp", []);
+            // รูปแบบการประกาศเป็นการแสดงว่าใช้ angular
+            app.controller("myCtrl", function($scope, $http){
+
+                $scope.get = function () {
+                    $http.get("https://jsonplaceholder.typicode.com/posts/1").then(function (response) {
+                        $scope.response = response;
+                    });
+                };
+
+            var httpPostRequest = $http({
+                method:"post",
+                url:"https://reqres.in/api/pailin", 
+                timeout: 5000,
+                data:{
+                        "name": "morpheus",
+                        "job": "leader"
+                    },
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                }
+            );
+
+            httpPostRequest.then(
+                        function(response){
+                        //code for success
+                        $scope.anotherResponse = response ;
+                    }, 
+                    function(error){
+                        //code for error
+                        console.log("Unable to perform post request");
+                        alert("Unable to perform post request");
+                    });
+                // $scope.callRESTAPI_POST = function(){
+                //     httpPostRequest.then(
+                //         function(response){
+                //         //code for success
+                //         $scope.anotherResponse = response ;
+                //     }, 
+                //     function(error){
+                //         //code for error
+                //         console.log("Unable to perform post request");
+                //         alert("Unable to perform post request");
+                //     });
+                // };
+
+                
+            });
+
+        </script>
+    </body>
+</html>

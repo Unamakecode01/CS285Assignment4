@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- angular js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+      body {
+        background-color: rgb(11, 109, 155);
+        margin-top: 30px;
+      }
+    </style>
+
+</head>
+
+  <body ng-app="flightapp" ng-controller="flightCtrl">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <div class="card mx-auto" style="width:1000px;">
+    <div class="card-header"><h1>Passenger</h1></div>
+    <div class="row justify-content-center" style="margin-top: 20px;margin-bottom: 20px;">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12">
+              <!-- <div class="card"> -->
+                  <div class="row">
+                    <!-- Coloumn for Title -->
+                      <div class="col-md-3">
+                        <label for="title">Title *</label>                            
+                        <select class="form-control" id="title">
+                          <option id="mr">monsieur</option>
+                          <option id="ms">Ladies</option>
+                        </select>
+                      </div>
+                    <!-- Coloumn for Firstname -->
+                      <div class="col-md-4">
+                        <label for="firstname">First name *</label>
+                        <input type="text" class="form-control" ng-model='fname' id="fname" placeholder="กรอกชื่อของท่าน" name="firstname" required>                                                         
+                      </div>
+                    <!-- Coloumn for Lastname -->
+                      <div class="col-md-5">
+                        <label for="lastname">Last name *</label>
+                        <input type="text" class="form-control" ng-model='lname' id="lname" placeholder="กรอกนามสกุลของท่าน" name="lastname" required>                                                                                        
+                      </div>
+                      <div class="w-100"></div><br>
+                    <!-- Coloumn for Birthdate -->
+                    <div class="col-md-12">
+                      <label for="birthdate">Brith Date*</label>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <!-- Day -->                            
+                          <select class="form-control" id="day">
+                              <option id="1">1</option>
+                              <option id="2">2</option>
+                              <option id="3">3</option>
+                              <option id="04">04</option>
+                              <option id="05">05</option>
+                              <option id="06">06</option>
+                              <option id="07">07</option>
+                              <option id="08">08</option>
+                              <option id="09">09</option>
+                              <option id="10">10</option>
+                              <option id="11">11</option>
+                              <option id="12">12</option>
+                              <option id="13">13</option>
+                              <option id="14">14</option>
+                              <option id="15">15</option>
+                              <option id="16">16</option>
+                              <option id="17">17</option>
+                              <option id="18">18</option>
+                              <option id="19">19</option>
+                              <option id="20">20</option>
+                              <option id="21">21</option>
+                              <option id="22">22</option>
+                              <option id="23">23</option>
+                              <option id="24">24</option>
+                              <option id="25">25</option>
+                              <option id="26">26</option>
+                              <option id="27">27</option>
+                              <option id="28">28</option>
+                              <option id="29">29</option>
+                              <option id="30">30</option>
+                              <option id="31">31</option> 
+                          </select>
+                        </div>
+                        <div class="col-md-2">
+                          <!-- Month -->
+                          <select class="form-control" id="month">
+                            <option id="1">1</option>
+                            <option id="2">2</option>
+                              <option id="3">3</option>
+                              <option id="04">4</option>
+                              <option id="05">5</option>
+                              <option id="06">6</option>
+                              <option id="07">7</option>
+                              <option id="08">8</option>
+                              <option id="09">9</option>
+                              <option id="10">10</option>
+                              <option id="11">11</option>
+                              <option id="12">12</option>
+                          </select> 
+                        </div>
+                        <div class="col-md-3">
+                          <!-- Year -->
+                          <select class="form-control" id="year">
+                            <option id="2020">2020</option>
+                            <option id="2019">2019</option>
+                              <option id="2018">2018</option>
+                              <option id="2017">2017</option>
+                              <option id="2016">2016</option>
+                              <option id="2015">2015</option>
+                              <option id="2014">2014</option>
+                              <option id="2013">2013</option>
+                              <option id="2012">2012</option>
+                              <option id="2011">2011</option>
+                              <option id="2010">2010</option>
+                              <option id="2009">2009</option>
+                              <option id="2008">2008</option>
+                              <option id="2007">2007</option>
+                              <option id="2006">2006</option>
+                              <option id="2005">2005</option>
+                              <option id="2004">2004</option>
+                              <option id="2003">2003</option>
+                              <option id="2002">2002</option>
+                              <option id="2001">2001</option>
+                              <option id="2000">2000</option>
+                          </select>                               
+                        </div> 
+                      </div>                     
+                    </div>
+                    <div class="w-100"></div><br>                        
+                    <!-- Coloumn for Passport -->
+                    <div class="col-md-7">
+                      <label for="pass">Passport No. *</label>
+                      <input type="text" class="form-control" ng-model='pid' id="pid" placeholder="กรอกหนังสือเลขหนังสือเดินทาง" name="passid" required>                              
+                    </div>
+                    <!-- Coloumn for Country -->
+                    <div class="col-md-4">
+                      <label for="country">Country *</label><br>
+                      <select class="form-control" id="countyid">
+                        <option id="th">Thiland</option>
+                        <option id="usa">United States</option>
+                        <option id="jp">Japan</option>
+                      </select>                            
+                    </div>   
+                    <div class="w-100"></div><br>
+                    <!-- Coloumn for Passport Expiration -->
+                    <div class="col-md-12">
+                        <label for="adults">Passport Expiration  Date*</label><br>
+                        <div class="row">
+                          <div class="col-md-2">
+                            <!-- Day -->                            
+                            <select class="form-control" id="day">
+                              <option id="1">1</option>
+                              <option id="2">2</option>
+                              <option id="3">3</option>
+                              <option id="04">04</option>
+                              <option id="05">05</option>
+                              <option id="06">06</option>
+                              <option id="07">07</option>
+                              <option id="08">08</option>
+                              <option id="09">09</option>
+                              <option id="10">10</option>
+                              <option id="11">11</option>
+                              <option id="12">12</option>
+                              <option id="13">13</option>
+                              <option id="14">14</option>
+                              <option id="15">15</option>
+                              <option id="16">16</option>
+                              <option id="17">17</option>
+                              <option id="18">18</option>
+                              <option id="19">19</option>
+                              <option id="20">20</option>
+                              <option id="21">21</option>
+                              <option id="22">22</option>
+                              <option id="23">23</option>
+                              <option id="24">24</option>
+                              <option id="25">25</option>
+                              <option id="26">26</option>
+                              <option id="27">27</option>
+                              <option id="28">28</option>
+                              <option id="29">29</option>
+                              <option id="30">30</option>
+                              <option id="31">31</option> 
+                            </select>
+                          </div>
+                          <div class="col-md-2">
+                            <!-- Month -->
+                            <select class="form-control" id="month">
+                              <option id="1">1</option>
+                              <option id="2">2</option>
+                              <option id="3">3</option>
+                              <option id="04">4</option>
+                              <option id="05">5</option>
+                              <option id="06">6</option>
+                              <option id="07">7</option>
+                              <option id="08">8</option>
+                              <option id="09">9</option>
+                              <option id="10">10</option>
+                              <option id="11">11</option>
+                              <option id="12">12</option>
+                            </select> 
+                          </div>
+                          <div class="col-md-3">
+                            <!-- Year -->
+                            <select class="form-control" id="year">
+                              <option id="2020">2020</option>
+                              <option id="2019">2019</option>
+                              <option id="2018">2018</option>
+                              <option id="2017">2017</option>
+                              <option id="2016">2016</option>
+                              <option id="2015">2015</option>
+                              <option id="2014">2014</option>
+                              <option id="2013">2013</option>
+                              <option id="2012">2012</option>
+                              <option id="2011">2011</option>
+                              <option id="2010">2010</option>
+                              <option id="2009">2009</option>
+                              <option id="2008">2008</option>
+                              <option id="2007">2007</option>
+                              <option id="2006">2006</option>
+                              <option id="2005">2005</option>
+                              <option id="2004">2004</option>
+                              <option id="2003">2003</option>
+                              <option id="2002">2002</option>
+                              <option id="2001">2001</option>
+                              <option id="2000">2000</option>
+                            </select>                               
+                          </div>                               
+                        </div>
+                    </div>
+                    
+                  </div>
+              </div>                  
+          </div>
+          <div class="w-100"></div><br>
+          <div class="col-md-6 offset-md-3" style="padding-top: 10px;">
+            <button type="button mx-auto" class="btn btn-primary" href="#next" style="width: 100%;">Next</button>
+          </div>
+
+        <!-- </div> -->
+      <!-- End Passenger Infotmation -->
+      </div>
+  
+      <!-- Start Payment Information -->
+      <div class="col-md-4" style="padding:0px;">   
+          <div class="card" style="padding: 0px;">
+              <div class="card-header">
+                  <h3 style="text-align: center;">Payment Information</h3>
+              </div>
+              <div class="card-body" style="padding: 0px;">
+                  <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                        <p style="text-align:left;">&nbspFlight:<span style="float:right;">{{flightdata.outbound.price}} บาท</span></p></li>
+                      <li class="list-group-item">
+                        <p style="text-align:left;">&nbspTax:<span style="float:right;">{{tax}} บาท</span></p></li>
+                      <li class="list-group-item">
+                        <p style="text-align:left;">&nbspServices Fee:<span style="float:right;">{{service}} บาท</span></p></li>
+                      <li class="list-group-item">
+                        <p style="text-align:left;">&nbspDiscount:<span style="float:right;">{{discount}} บาท</span></p></li>
+                  </ul>
+              </div> 
+              <div class="card-footer">
+                  <p style="text-align:left;">&nbspTotal<span style="float:right;">{{flightdata.outbound.price + tax}} บาท</span></p>
+              </div>     
+          </div>
+      <!-- Close Payment Informaion -->          
+      </div>
+      <!-- Data is {{flightdata}} -->
+
+    </div>
+  </div>
+
+  <div ng-view></div>
+
+<script>
+  alert('test')
+  // https://www.guru99.com/angularjs-routes.html
+    var index = JSON.parse(sessionStorage.getItem("result"));
+    
+    var  app = angular.module('flightapp', ['ngRoute']);
+
+    app.config(['$routeProvider', function($routeProvider){
+        $routeProvider.when('/next',{
+            templateUrl : '/insurance.html',
+            controller: 'insuranceCtrl'
+        });
+    }]);
+
+    app.controller('flightCtrl', function($scope, $http) {
+      
+      $http.get("/flight").then(function(response) {
+        $scope.flightdata = response.data;
+        $scope.flightdata = $scope.flightdata[0];        
+      });
+
+
+
+      $scope.tax = 1000;
+      $scope.service = 0;
+      $scope.discount = 0;
+      $scope.total = 0;
+
+      let result = [];
+                
+      result.push(index);
+      // result.push(t2[1]);
+
+      sessionStorage.clear();
+      // sessionStorage.setItem('results',JSON.stringify(result)); 
+      sessionStorage.setItem('results',result); 
+      // window.location.href = 'insurance.html';        
+
+    });
+
+  
+  </script>
+
+  </body>
+</html>
